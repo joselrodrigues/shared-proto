@@ -1,5 +1,5 @@
 syntax = "proto3";
-
+option go_package = "github.com/joselrodrigues/shared-proto/proto/auth";
 package auth;
 
 service AuthService {
