@@ -5,6 +5,7 @@ package auth;
 service AuthService {
   rpc SignIn(Request) returns (Response) {}
   rpc SignUp(Request) returns (Response) {}
+  rpc ValidateToken(ValidateTokenRequest) returns (ValidateTokenResponse) {}
 }
 
 message Request {
@@ -17,4 +18,21 @@ message Response {
   string access_token = 1;
   string refresh_token = 2;
 }
+
+message ValidateTokenRequest {
+  string token = 1;
+}
+
+message ValidateTokenResponse {
+  JWTClaims claims = 2;
+}
+
+message JWTClaims {
+  string sub = 1;
+  int64 exp = 2;
+  int64 iat = 3;
+  int64 nbf = 4;
+}
+
+
 
