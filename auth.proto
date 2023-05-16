@@ -5,6 +5,7 @@ package auth;
 service AuthService {
   rpc SignIn(Request) returns (Response) {}
   rpc SignUp(Request) returns (Response) {}
+  rpc SignOut(DeleteRefreshTokenRequest) returns (DeleteRefreshTokenResponse){}
   rpc ValidateToken(ValidateTokenRequest) returns (ValidateTokenResponse) {}
   rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse){}
 }
@@ -42,3 +43,10 @@ message RefreshTokenRequest {
 message RefreshTokenResponse {
   string access_token = 1;
 }
+
+message DeleteRefreshTokenRequest {
+  string refresh_token = 1;
+  string session_id = 2;
+}
+
+message DeleteRefreshTokenResponse {}
