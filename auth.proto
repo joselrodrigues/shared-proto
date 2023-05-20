@@ -8,6 +8,7 @@ service AuthService {
   rpc SignOut(DeleteRefreshTokenRequest) returns (DeleteRefreshTokenResponse){}
   rpc ValidateToken(ValidateTokenRequest) returns (ValidateTokenResponse) {}
   rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse){}
+  rpc Sessions(SessionRequest) returns (SessionResponse){}
 }
 
 message Request {
@@ -36,6 +37,12 @@ message JWTClaims {
   int64 nbf = 4;
 }
 
+message SessionData {
+  string session_id = 1;
+	int64	login_timestamp = 2;
+	string user_agent = 3;
+}
+
 message RefreshTokenRequest {
   string refresh_token = 1;
 }
@@ -50,3 +57,13 @@ message DeleteRefreshTokenRequest {
 }
 
 message DeleteRefreshTokenResponse {}
+
+
+message SessionRequest {
+  string access_token = 1;
+  string refresh_token = 2;
+}
+
+message SessionResponse {
+  repeated SessionData sessions_data = 1;
+}
