@@ -38,7 +38,7 @@ message JWTClaims {
 }
 
 message SessionData {
-  string session_id = 1;
+  string id = 1;
 	int64	login_timestamp = 2;
 	string user_agent = 3;
 }
@@ -65,5 +65,5 @@ message SessionRequest {
 }
 
 message SessionResponse {
-  repeated SessionData sessions_data = 1;
+  repeated SessionData sessions = 1;
 }
