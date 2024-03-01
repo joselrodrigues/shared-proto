@@ -1,0 +1,22 @@
+syntax = "proto3";
+option go_package = "github.com/joselrodrigues/shared-proto/proto/ml";
+package deep_learning;
+
+service ContentModerationService {
+  rpc FilterMessage(Message) returns (FilterResponse) {}
+}
+
+message Message {
+  string content = 1;
+}
+
+message FilterResponse {
+  double toxicity = 1;
+  double severe_toxicity = 2;
+  double obscene = 3;
+  double threat = 4;
+  double insult = 5;
+  double identity_attack = 6;
+  double sexual_explicit = 7;
+}
+

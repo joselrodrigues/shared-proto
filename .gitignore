@@ -1,3 +1,4 @@
 
 # Protoc files created
 *.pb.go
+*.py
